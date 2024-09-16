@@ -19,4 +19,17 @@ public abstract class Utilisateur {
     public String getProfession() {
         return profession;
     }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
+    
 }
