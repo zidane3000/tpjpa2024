@@ -16,6 +16,10 @@ public class Createur extends Utilisateur {
     private long idC;
     private Collection<Session> sessions;
 
+    public Createur() {
+        super();
+    }
+
     @Id
     @GeneratedValue
     public long getIdC() {
@@ -42,5 +46,11 @@ public class Createur extends Utilisateur {
     public void setIdC(long idC) {
         this.idC = idC;
     }
+
+    public void setSessions(Collection<Session> sessions) {
+        this.sessions = sessions;
+    }
+
+
 
 }

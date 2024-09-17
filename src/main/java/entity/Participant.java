@@ -35,4 +35,18 @@ public class Participant extends Utilisateur {
         return session;
     }
 
+    public void setIdP(long idP) {
+        this.idP = idP;
+    }
+
+    public void setReponseParticipant(List<ReponseParticipant> reponseParticipant) {
+        this.reponseParticipant = reponseParticipant;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    
+
 }
