@@ -21,7 +21,6 @@ public class Kahoot {
     private Type type;
     private Session session;
     private Collection<ReponsePossible> reponsesPossibles;
-    private String question;
 
     public Kahoot() {
     }
@@ -32,14 +31,6 @@ public class Kahoot {
 
     public int getClassement() {
         return classement;
-    }
-
-    public String getQuestion() {
-        return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
     }
 
     @ManyToOne
@@ -61,29 +52,4 @@ public class Kahoot {
     public String getType() {
         return type.toString();
     }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public void setClassement(int classement) {
-        this.classement = classement;
-    }
-
-    public void setSession(Session session) {
-        this.session = session;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setReponsesPossibles(Collection<ReponsePossible> reponsesPossibles) {
-        this.reponsesPossibles = reponsesPossibles;
-    }
-
-    public void setType(String type) {
-        this.type = Type.valueOf(type);
-    }
-
 }

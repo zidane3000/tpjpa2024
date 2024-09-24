@@ -16,10 +16,6 @@ public class ReponsePossible {
 
     private Kahoot kahoot;
 
-    
-    public ReponsePossible() {
-    }
-
     @Id
     @GeneratedValue
     public long getId() {
@@ -34,22 +30,5 @@ public class ReponsePossible {
     public Kahoot getKahoot() {
         return kahoot;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setReponses(Set<String> reponses) {
-        this.reponses = reponses;
-    }
-
-    public void setKahoot(Kahoot kahoot) {
-        this.kahoot = kahoot;
-    }
-
-    public void addReponse(String reponse) {
-        this.reponses.add(reponse);
-    }
-
 
 }

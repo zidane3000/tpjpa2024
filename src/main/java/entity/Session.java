@@ -82,14 +82,4 @@ public class Session {
         this.id = id;
     }
 
-    public void setReponseParticipant(Collection<ReponseParticipant> reponseParticipant) {
-        this.reponseParticipant = reponseParticipant;
-    }
-
-    public void setScore_final(int score_final) {
-        this.score_final = score_final;
-    }
-
-
-
 }
