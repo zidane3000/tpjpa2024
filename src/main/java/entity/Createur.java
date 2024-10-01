@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import org.hibernate.annotations.ManyToAny;
@@ -10,6 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
+import classAbstracts.Kahoot;
+
 @Entity
 public class Createur extends Utilisateur {
 
@@ -17,7 +20,7 @@ public class Createur extends Utilisateur {
     private Collection<Session> sessions;
 
     public Createur() {
-        super();
+        this.sessions = new ArrayList<>();
     }
 
     @Id
@@ -31,26 +34,12 @@ public class Createur extends Utilisateur {
         return sessions;
     }
 
-    public void setNom(String nom) {
-        super.setNom(nom);
+
+    public void creerSession(Session s){
+        if (sessions == null) {
+            sessions = new ArrayList<>();
+        }
+        this.sessions.add(s);
     }
-
-    public void setPrenom(String prenom) {
-        super.setPrenom(prenom);
-    }
-
-    public void setProfession(String profession) {
-        super.setProfession(profession);
-    }
-
-    public void setIdC(long idC) {
-        this.idC = idC;
-    }
-
-    public void setSessions(Collection<Session> sessions) {
-        this.sessions = sessions;
-    }
-
-
 
 }

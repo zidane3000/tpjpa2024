@@ -1,23 +1,20 @@
 package entity;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import classAbstracts.Kahoot;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class ReponsePossible {
 
     private long id;
     private Set<String> reponses;
-
     private Kahoot kahoot;
 
-    
     public ReponsePossible() {
+        this.reponses = new HashSet<String>();
     }
 
     @Id
@@ -26,17 +23,9 @@ public class ReponsePossible {
         return id;
     }
 
+    @ElementCollection
     public Set<String> getReponses() {
         return reponses;
-    }
-
-    @ManyToOne
-    public Kahoot getKahoot() {
-        return kahoot;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public void setReponses(Set<String> reponses) {
@@ -47,9 +36,9 @@ public class ReponsePossible {
         this.kahoot = kahoot;
     }
 
-    public void addReponse(String reponse) {
-        this.reponses.add(reponse);
+    @ManyToOne
+    public Kahoot getKahoot() {
+        return kahoot;
     }
-
 
 }

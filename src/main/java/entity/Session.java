@@ -8,6 +8,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Session {
@@ -15,12 +17,18 @@ public class Session {
     private long id;
     private int PIN;
     private int score_final;
-    private int classement_final;
 
     private Createur createur;
     private Collection<Participant> participants;
     private Collection<Kahoot> kahoots;
-    private Collection<ReponseParticipant> reponseParticipant;
+    private Collection<ReponseParticipant> reponsesParticipants;
+
+    public Session() {
+        this.participants = new HashSet<Participant>();
+        this.kahoots = new HashSet<Kahoot>();
+        this.reponsesParticipants = new HashSet<ReponseParticipant>();
+        this.score_final = 0;
+    }
 
     @Id
     @GeneratedValue
@@ -36,26 +44,24 @@ public class Session {
         return score_final;
     }
 
-    public int getClassement_final() {
-        return classement_final;
-    }
-    @OneToMany
+    @OneToMany(mappedBy = "session")
     public Collection<Participant> getParticipants() {
         return participants;
     }
+
     @ManyToOne
     public Createur getCreateur() {
         return createur;
     }
 
-    @OneToMany
+    @OneToMany(mappedBy = "session")
     public Collection<Kahoot> getKahoots() {
         return kahoots;
     }
 
-    @OneToMany
-    public Collection<ReponseParticipant> getReponseParticipant() {
-        return reponseParticipant;
+    @OneToMany(mappedBy = "session")
+    public Collection<ReponseParticipant> getReponsesParticipants() {
+        return reponsesParticipants;
     }
 
     public void setKahoots(Collection<Kahoot> kahoots) {
@@ -70,26 +76,11 @@ public class Session {
         this.participants = participants;
     }
 
-    public void setClassement_final(int classement_final) {
-        this.classement_final = classement_final;
-    }
-
-    public void setPIN(int PIN) {
-        this.PIN = PIN;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public void setReponseParticipant(Collection<ReponseParticipant> reponseParticipant) {
-        this.reponseParticipant = reponseParticipant;
-    }
-
     public void setScore_final(int score_final) {
         this.score_final = score_final;
     }
 
-
-
+    public void setReponsesParticipants(Collection<ReponseParticipant> reponsesParticipants) {
+        this.reponsesParticipants = reponsesParticipants;
+    }
 }
