@@ -4,11 +4,7 @@ import java.util.Collection;
 
 import entity.ReponsePossible;
 import entity.Session;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 @Entity
 public class Kahoot {
@@ -23,6 +19,36 @@ public class Kahoot {
     private Collection<ReponsePossible> reponsesPossibles;
 
     public Kahoot() {
+    }
+    public Kahoot(int score, int classement, Type type, Session session) {
+        this.score = score;
+        this.classement = classement;
+        this.type = type;
+        this.session = session;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setClassement(int classement) {
+        this.classement = classement;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public void setReponsesPossibles(Collection<ReponsePossible> reponsesPossibles) {
+        this.reponsesPossibles = reponsesPossibles;
     }
 
     public int getScore() {
@@ -44,12 +70,13 @@ public class Kahoot {
         return id;
     }
 
-    @OneToMany(mappedBy = "kahoot")
+    @OneToMany(mappedBy = "kahoot", cascade = CascadeType.ALL)
     public Collection<ReponsePossible> getReponsesPossibles() {
         return reponsesPossibles;
     }
 
-    public String getType() {
-        return type.toString();
+    @Enumerated(EnumType.STRING)
+    public Type getType() {
+        return type;
     }
 }

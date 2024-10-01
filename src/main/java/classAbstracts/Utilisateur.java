@@ -1,12 +1,17 @@
 package classAbstracts;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.MappedSuperclass;
 
+@MappedSuperclass
 public abstract class Utilisateur {
 
-    private String nom;
-    private String prenom;
+    private String nom, prenom;
 
     private String profession;
+
+    private String email, motDePasse;
+
 
     public String getNom(){
         return nom;
@@ -31,5 +36,20 @@ public abstract class Utilisateur {
     public void setProfession(String profession) {
         this.profession = profession;
     }
-    
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getMotDePasse() {
+        return motDePasse;
+    }
+
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
+    }
 }

@@ -2,11 +2,7 @@ package entity;
 
 import java.util.Date;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class ReponseParticipant {
@@ -16,6 +12,8 @@ public class ReponseParticipant {
     private ReponsePossible reponsePossible;
     private Participant participant;
     private Session session;
+
+    @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
     public ReponseParticipant() {
@@ -25,10 +23,6 @@ public class ReponseParticipant {
     @GeneratedValue
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getText() {

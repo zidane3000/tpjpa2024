@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.annotations.ManyToAny;
@@ -16,8 +17,14 @@ import jakarta.persistence.OneToMany;
 public class Participant extends Utilisateur {
 
     private long idP;
-    private List<ReponseParticipant> reponseParticipant;
+    private List<ReponseParticipant> reponsesParticipant;
     private Session session;
+    private int scoreTotal;
+
+    public Participant() {
+        this.reponsesParticipant = new ArrayList<>();
+    }
+
 
     @Id
     @GeneratedValue
@@ -27,7 +34,7 @@ public class Participant extends Utilisateur {
 
     @OneToMany(mappedBy = "participant")
     public List<ReponseParticipant> getReponseParticipant() {
-        return reponseParticipant;
+        return reponsesParticipant;
     }
 
     @ManyToOne
@@ -35,4 +42,26 @@ public class Participant extends Utilisateur {
         return session;
     }
 
+    public void setReponseParticipant(List<ReponseParticipant> reponseParticipant) {
+        this.reponsesParticipant = reponseParticipant;
+    }
+
+    public void setSession(Session session) {
+        this.session = session;
+    }
+
+    public int getScoreTotal() {
+        return scoreTotal;
+    }
+
+    public void setScoreTotal(int scoreTotal) {
+        this.scoreTotal = scoreTotal;
+    }
+
+    public void addReponse(ReponseParticipant reponse) {
+        if (reponsesParticipant == null) {
+            reponsesParticipant = new ArrayList<>();
+        }
+        this.reponsesParticipant.add(reponse);
+    }
 }
