@@ -40,6 +40,10 @@ public class Session {
         return PIN;
     }
 
+    public void setPIN(int PIN) {
+        this.PIN = PIN;
+    }
+
     public int getScore_final() {
         return score_final;
     }

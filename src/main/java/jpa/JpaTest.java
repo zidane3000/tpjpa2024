@@ -36,7 +36,6 @@ public class JpaTest {
         Session session = new Session();
         session.setPIN(123456);
         session.setScore_final(100);
-        session.setClassement_final(1);
         session.setCreateur(createur);
 
         // Persist the Session
@@ -54,7 +53,7 @@ public class JpaTest {
 
         // Create a ReponsePossible
         ReponsePossible reponsePossible = new ReponsePossible();
-        reponsePossible.addReponse("Answer 1");
+        reponsePossible.setReponses("Answer 1, Answer 2, Answer 3");
 
         // Persist the ReponsePossible
         manager.persist(reponsePossible);
@@ -75,8 +74,8 @@ public class JpaTest {
         session.setParticipants(new ArrayList<>());
         session.getParticipants().add(participant);
 
-        session.setReponseParticipant(new ArrayList<>());
-        session.getReponseParticipant().add(reponseParticipant);
+        session.setReponsesParticipants(null);
+        session.getReponsesParticipants().add(reponseParticipant);
 
         createur.setSessions(new ArrayList<>());
         createur.getSessions().add(session);

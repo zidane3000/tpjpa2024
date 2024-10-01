@@ -34,6 +34,10 @@ public class Createur extends Utilisateur {
         return sessions;
     }
 
+    public void setSessions(Collection<Session> sessions) {
+        this.sessions = sessions;
+    }
+
 
     public void creerSession(Session s){
         if (sessions == null) {

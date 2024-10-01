@@ -10,11 +10,10 @@ import jakarta.persistence.*;
 public class ReponsePossible {
 
     private long id;
-    private Set<String> reponses;
+    private String reponses;
     private Kahoot kahoot;
 
     public ReponsePossible() {
-        this.reponses = new HashSet<String>();
     }
 
     @Id
@@ -23,12 +22,12 @@ public class ReponsePossible {
         return id;
     }
 
-    @ElementCollection
-    public Set<String> getReponses() {
+    
+    public String getReponses() {
         return reponses;
     }
 
-    public void setReponses(Set<String> reponses) {
+    public void setReponses(String reponses) {
         this.reponses = reponses;
     }
 
@@ -40,5 +39,7 @@ public class ReponsePossible {
     public Kahoot getKahoot() {
         return kahoot;
     }
+
+    
 
 }
