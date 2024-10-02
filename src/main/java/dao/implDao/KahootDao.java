@@ -6,7 +6,6 @@ import entity.Kahoot;
 public class KahootDao extends AbstractJpaDao<Long, Kahoot> {
 
     public KahootDao() {
-        super();
-        setClazz(Kahoot.class);
+        this.setClazz(Kahoot.class);
     }
 }
