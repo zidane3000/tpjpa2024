@@ -3,15 +3,11 @@ package entity;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.hibernate.annotations.ManyToAny;
-
 import classAbstracts.Utilisateur;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-
-import classAbstracts.Kahoot;
 
 @Entity
 public class Createur extends Utilisateur {
@@ -27,6 +23,10 @@ public class Createur extends Utilisateur {
     @GeneratedValue
     public long getIdC() {
         return idC;
+    }
+
+    public void setIdC(long idC) {
+        this.idC = idC;
     }
 
     @OneToMany(mappedBy = "createur")

@@ -1,13 +1,12 @@
-package classAbstracts;
+package entity;
 
+import java.io.Serializable;
 import java.util.Collection;
 
-import entity.ReponsePossible;
-import entity.Session;
 import jakarta.persistence.*;
 
 @Entity
-public class Kahoot {
+public class Kahoot implements Serializable {
     public enum Type {
         QUIZ, SONDAGE
     }
@@ -32,6 +31,11 @@ public class Kahoot {
     public long getId() {
         return id;
     }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
     @ManyToOne
     public Session getSession() {
         return session;

@@ -32,8 +32,14 @@ public class Participant extends Utilisateur {
         return idP;
     }
 
+
+
+    public void setIdP(long idP) {
+        this.idP = idP;
+    }
+
     @OneToMany(mappedBy = "participant")
-    public List<ReponseParticipant> getReponseParticipant() {
+    public List<ReponseParticipant> getReponsesParticipant() {
         return reponsesParticipant;
     }
 
@@ -42,7 +48,7 @@ public class Participant extends Utilisateur {
         return session;
     }
 
-    public void setReponseParticipant(List<ReponseParticipant> reponseParticipant) {
+    public void setReponsesParticipant(List<ReponseParticipant> reponseParticipant) {
         this.reponsesParticipant = reponseParticipant;
     }
 

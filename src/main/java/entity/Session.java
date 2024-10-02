@@ -1,18 +1,17 @@
 package entity;
 
-import classAbstracts.Kahoot;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.HashSet;
-import java.util.Set;
 
 @Entity
-public class Session {
+public class Session implements Serializable {
 
     private long id;
     private int PIN;
@@ -34,6 +33,10 @@ public class Session {
     @GeneratedValue
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public int getPIN() {
@@ -87,4 +90,5 @@ public class Session {
     public void setReponsesParticipants(Collection<ReponseParticipant> reponsesParticipants) {
         this.reponsesParticipants = reponsesParticipants;
     }
+
 }

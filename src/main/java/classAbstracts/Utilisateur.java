@@ -3,8 +3,10 @@ package classAbstracts;
 import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 
+import java.io.Serializable;
+
 @MappedSuperclass
-public abstract class Utilisateur {
+public abstract class Utilisateur implements Serializable {
 
     private String nom, prenom;
 

@@ -1,97 +1,82 @@
 package jpa;
 
 
-import java.util.Date;
+import java.util.*;
 
-import entity.Createur;
-import entity.Participant;
-import entity.ReponseParticipant;
-import entity.ReponsePossible;
-import entity.Session;
+import dao.implDao.KahootDao;
+import dao.implDao.SessionDao;
+import dao.implDao.UtilisateurDao;
+import entity.*;
 
-import java.util.ArrayList;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
 public class JpaTest {
 
 
-	private EntityManager manager;
 
-	public JpaTest(EntityManager manager) {
-		this.manager = manager;
+
+	public JpaTest() {
+
 	}
 	
     public void createAndPersistEntities() {
-        // Create a Createur
-        Createur createur = new Createur();
-        createur.setNom("John");
-        createur.setPrenom("Doe");
-        createur.setProfession("Teacher");
 
-        // Persist the Createur
-        manager.persist(createur);
 
-        // Create a Session
-        Session session = new Session();
-        session.setPIN(123456);
-        session.setScore_final(100);
-        session.setCreateur(createur);
 
-        // Persist the Session
-        manager.persist(session);
 
-        // Create a Participant
-        Participant participant = new Participant();
-        participant.setNom("Jane");
-        participant.setPrenom("Smith");
-        participant.setProfession("Student");
-        participant.setSession(session);
+            // Create a Createur
+            Createur createur = new Createur();
+            createur.setNom("nicolas2");
+            createur.setPrenom("Doe2");
+            createur.setProfession("Teacher");
 
-        // Persist the Participant
-        manager.persist(participant);
+            // Persist the Createur
+        UtilisateurDao daoUtilisateur = new UtilisateurDao();
+        daoUtilisateur.save(createur);
 
-        // Create a ReponsePossible
-        ReponsePossible reponsePossible = new ReponsePossible();
-        reponsePossible.setReponses("Answer 1, Answer 2, Answer 3");
 
-        // Persist the ReponsePossible
-        manager.persist(reponsePossible);
+            // Create a Session
+            Session session = new Session();
+            session.setPIN(1234567);
+            session.setScore_final(100);
+            session.setCreateur(createur);
 
-        // Create a ReponseParticipant
-        ReponseParticipant reponseParticipant = new ReponseParticipant();
-        reponseParticipant.setText("Answer 1");
-        reponseParticipant.setCorrect(true);
-        reponseParticipant.setReponsePossible(reponsePossible);
-        reponseParticipant.setParticipant(participant);
-        reponseParticipant.setSession(session);
-        reponseParticipant.setDate(new Date());
+        SessionDao daoSession = new SessionDao();
+        daoSession.delete(session);
 
-        // Persist the ReponseParticipant
-        manager.persist(reponseParticipant);
+            // Persist the Session
 
-        // Add the entities to their respective collections
-        session.setParticipants(new ArrayList<>());
-        session.getParticipants().add(participant);
 
-        session.setReponsesParticipants(null);
-        session.getReponsesParticipants().add(reponseParticipant);
+            // Create Kahoot
+            Kahoot kahoot = new Kahoot();
+            kahoot.setQuestion("What's your name 2?");
+            kahoot.setClassement(1);
+            kahoot.setSession(session); // Référence à la session persistée
+            kahoot.setScore(10);
+            kahoot.setType(Kahoot.Type.QUIZ);
 
-        createur.setSessions(new ArrayList<>());
-        createur.getSessions().add(session);
+            // Créer et ajouter des réponses possibles
+            Collection<ReponsePossible> reponsesPossibles = new HashSet<>();
+            ReponsePossible rep = new ReponsePossible("meryem2, zidane2");
+            rep.setKahoot(kahoot); // Assure que la réponse connaît son kahoot
+            reponsesPossibles.add(rep);
+            kahoot.setReponsesPossibles(reponsesPossibles);
 
-        participant.setReponseParticipant(new ArrayList<>());
-        participant.getReponseParticipant().add(reponseParticipant);
+            // Persist the Kahoot
+            KahootDao daoKahoot = new KahootDao();
+            daoKahoot.delete(kahoot);
+
+
     }
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		EntityManager manager = EntityManagerHelper.getEntityManager();
-		JpaTest test = new JpaTest(manager);
+		JpaTest test = new JpaTest();
 		
-		EntityTransaction tx = manager.getTransaction();
-		tx.begin();
+		//EntityTransaction tx = manager.getTransaction();
+		//tx.begin();
 		try {
 			
 			// TODO create and persist entity
@@ -99,10 +84,9 @@ public class JpaTest {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		tx.commit();
+		//tx.commit();
 
-			
-   	 manager.close();
+
 		EntityManagerHelper.closeEntityManagerFactory();
 		System.out.println(".. done");
 	}

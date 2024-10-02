@@ -1,9 +1,5 @@
 package entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import classAbstracts.Kahoot;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,6 +11,9 @@ public class ReponsePossible {
 
     public ReponsePossible() {
     }
+    public ReponsePossible(String reponses) {
+        this.reponses = reponses;
+    }
 
     @Id
     @GeneratedValue
@@ -22,7 +21,10 @@ public class ReponsePossible {
         return id;
     }
 
-    
+    public void setId(long id) {
+        this.id = id;
+    }
+
     public String getReponses() {
         return reponses;
     }
