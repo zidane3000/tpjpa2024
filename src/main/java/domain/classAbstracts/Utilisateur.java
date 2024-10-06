@@ -1,11 +1,10 @@
-package classAbstracts;
+package domain.classAbstracts;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.MappedSuperclass;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
-@MappedSuperclass
+@Component
 public abstract class Utilisateur implements Serializable {
 
     private String nom, prenom;

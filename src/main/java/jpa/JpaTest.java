@@ -1,16 +1,6 @@
 package jpa;
 
 
-import java.util.*;
-
-import dao.implDao.KahootDao;
-import dao.implDao.SessionDao;
-import dao.implDao.UtilisateurDao;
-import entity.*;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityTransaction;
-
 public class JpaTest {
 
 
@@ -24,7 +14,7 @@ public class JpaTest {
 
 
 
-
+/*
             // Create a Createur
             Createur createur = new Createur();
             createur.setNom("nicolas2");
@@ -67,7 +57,7 @@ public class JpaTest {
             KahootDao daoKahoot = new KahootDao();
             daoKahoot.delete(kahoot);
 
-
+*/
     }
 	/**
 	 * @param args

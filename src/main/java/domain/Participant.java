@@ -1,17 +1,10 @@
-package entity;
+package domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.ManyToAny;
-
-import classAbstracts.Utilisateur;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-
+import domain.classAbstracts.Utilisateur;
+import jakarta.persistence.*;
 
 @Entity
 public class Participant extends Utilisateur {
@@ -24,7 +17,6 @@ public class Participant extends Utilisateur {
     public Participant() {
         this.reponsesParticipant = new ArrayList<>();
     }
-
 
     @Id
     @GeneratedValue

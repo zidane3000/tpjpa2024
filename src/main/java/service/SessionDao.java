@@ -1,7 +1,6 @@
-package dao.implDao;
+package service;
 
-import dao.AbstractJpaDao;
-import entity.Session;
+import domain.Session;
 
 public class SessionDao extends AbstractJpaDao<Long, Session> {
 

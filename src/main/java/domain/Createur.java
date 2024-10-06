@@ -1,9 +1,9 @@
-package entity;
+package domain;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import classAbstracts.Utilisateur;
+import domain.classAbstracts.Utilisateur;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

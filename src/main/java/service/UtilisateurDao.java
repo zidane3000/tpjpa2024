@@ -1,7 +1,6 @@
-package dao.implDao;
+package service;
 
-import classAbstracts.Utilisateur;
-import dao.AbstractJpaDao;
+import domain.classAbstracts.Utilisateur;
 
 public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {
 
