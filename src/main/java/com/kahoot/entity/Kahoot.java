@@ -3,6 +3,7 @@ package com.kahoot.entity;
 import java.io.Serializable;
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -42,6 +43,7 @@ public class Kahoot implements Serializable {
     }
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "kahoot", cascade = CascadeType.ALL)
     public Collection<ReponsePossible> getReponsesPossibles() {
         return reponsesPossibles;

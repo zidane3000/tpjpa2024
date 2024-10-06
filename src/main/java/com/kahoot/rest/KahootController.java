@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import com.kahoot.dao.KahootDao;
 
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 @Controller
@@ -63,6 +65,7 @@ public class KahootController {
         }
     }
 
+    //TODO : a tester
     /**
      * GET /kahoots/get-by-question/{question}  --> Returns the ID of the Kahoot with the given question.
      */
@@ -70,6 +73,7 @@ public class KahootController {
     @ResponseBody
     public ResponseEntity<String> getByQuestion(@PathVariable("question") String question) {
         try {
+            question = URLDecoder.decode(question, StandardCharsets.UTF_8);
             Kahoot kahoot = kahootDao.findByQuestion(question);
             String kahootId = String.valueOf(kahoot.getId());
             return new ResponseEntity<>("The ID of the Kahoot is: " + kahootId, HttpStatus.OK);
