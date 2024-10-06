@@ -1,7 +1,7 @@
-package dao.implDao;
+package kahoot.dao.implDao;
 
-import dao.AbstractJpaDao;
-import entity.Kahoot;
+import kahoot.dao.AbstractJpaDao;
+import kahoot.domain.Kahoot;
 
 public class KahootDao extends AbstractJpaDao<Long, Kahoot> {
 

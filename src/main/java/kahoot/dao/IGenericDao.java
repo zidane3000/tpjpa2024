@@ -1,4 +1,4 @@
-package dao;
+package kahoot.dao;
 
 import java.io.Serializable;
 import java.util.List;

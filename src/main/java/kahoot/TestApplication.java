@@ -1,4 +1,4 @@
-package rest;
+package kahoot;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -6,7 +6,7 @@ import java.util.Set;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
-import rest.ressource.KahootResource; // Importez votre classe de ressource REST.
+import kahoot.rest.KahootResource; // Importez votre classe de ressource REST.
 
 @ApplicationPath("/api") // Définit le chemin de base pour l'API
 public class TestApplication extends Application {

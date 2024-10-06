@@ -1,4 +1,4 @@
-package entity;
+package kahoot.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

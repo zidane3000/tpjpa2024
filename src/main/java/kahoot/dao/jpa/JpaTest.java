@@ -1,12 +1,15 @@
-package jpa;
+package kahoot.dao.jpa;
 
 
 import java.util.*;
 
-import dao.implDao.KahootDao;
-import dao.implDao.SessionDao;
-import dao.implDao.UtilisateurDao;
-import entity.*;
+import kahoot.dao.implDao.KahootDao;
+import kahoot.dao.implDao.SessionDao;
+import kahoot.dao.implDao.UtilisateurDao;
+import kahoot.domain.Createur;
+import kahoot.domain.Kahoot;
+import kahoot.domain.ReponsePossible;
+import kahoot.domain.Session;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
@@ -74,7 +77,7 @@ public class JpaTest {
         //tx.begin();
 		try {
 
-			// TODO create and persist entity
+			// TODO create and persist rest.kahoot.entity
 			test.createAndPersistEntities();
 
 		} catch (Exception e) {

@@ -1,11 +1,9 @@
-package entity;
+package kahoot.domain;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.ManyToAny;
-
-import classAbstracts.Utilisateur;
+import kahoot.domain.classAbstracts.Utilisateur;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;

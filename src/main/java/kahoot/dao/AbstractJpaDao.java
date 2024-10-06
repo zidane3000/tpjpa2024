@@ -1,11 +1,11 @@
-package dao;
+package kahoot.dao;
 
 import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import jpa.EntityManagerHelper;
+import kahoot.dao.jpa.EntityManagerHelper;
 
 public abstract class AbstractJpaDao<K, T extends Serializable> implements IGenericDao<K, T> {
 

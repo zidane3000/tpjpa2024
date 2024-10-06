@@ -1,7 +1,7 @@
-package rest.ressource;
+package kahoot.rest;
 
-import dao.implDao.KahootDao;
-import entity.Kahoot;
+import kahoot.dao.implDao.KahootDao;
+import kahoot.domain.Kahoot;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -10,7 +10,8 @@ import jakarta.ws.rs.core.Response;
 import java.util.List;
 
 @Path("/kahoots")
-@Produces({"application/json", "application/xml"})
+@Produces(MediaType.APPLICATION_JSON)
+@Consumes(MediaType.APPLICATION_JSON)
 public class KahootResource {
 
     private KahootDao kahootDao = new KahootDao();
@@ -18,6 +19,7 @@ public class KahootResource {
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
     public List<Kahoot> getAllKahoots() {
+
         return kahootDao.findAll();
     }
 

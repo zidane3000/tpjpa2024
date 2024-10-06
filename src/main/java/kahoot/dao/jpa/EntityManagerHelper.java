@@ -1,4 +1,4 @@
-package jpa;
+package kahoot.dao.jpa;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

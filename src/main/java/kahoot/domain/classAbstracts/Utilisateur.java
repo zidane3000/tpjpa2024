@@ -1,6 +1,5 @@
-package classAbstracts;
+package kahoot.domain.classAbstracts;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.MappedSuperclass;
 
 import java.io.Serializable;

@@ -1,7 +1,7 @@
-package dao.implDao;
+package kahoot.dao.implDao;
 
-import dao.AbstractJpaDao;
-import entity.Session;
+import kahoot.dao.AbstractJpaDao;
+import kahoot.domain.Session;
 
 public class SessionDao extends AbstractJpaDao<Long, Session> {
 
