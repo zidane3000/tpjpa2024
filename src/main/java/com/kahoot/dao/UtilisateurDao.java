@@ -1,6 +1,6 @@
-package service;
+package com.kahoot.dao;
 
-import domain.classAbstracts.Utilisateur;
+import com.kahoot.entity.classAbstracts.Utilisateur;
 
 public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {
 

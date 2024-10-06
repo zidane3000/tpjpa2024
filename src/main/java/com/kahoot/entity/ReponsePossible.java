@@ -1,4 +1,4 @@
-package domain;
+package com.kahoot.entity;
 
 import jakarta.persistence.*;
 

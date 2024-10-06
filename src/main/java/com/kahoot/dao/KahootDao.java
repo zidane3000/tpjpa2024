@@ -1,6 +1,6 @@
-package service;
+package com.kahoot.dao;
 
-import domain.Kahoot;
+import com.kahoot.entity.Kahoot;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 

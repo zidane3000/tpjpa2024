@@ -1,4 +1,4 @@
-package domain;
+package com.kahoot.entity;
 
 import java.io.Serializable;
 import java.util.Collection;

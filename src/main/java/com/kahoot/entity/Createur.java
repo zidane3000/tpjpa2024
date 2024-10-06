@@ -1,13 +1,10 @@
-package domain;
+package com.kahoot.entity;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
-import domain.classAbstracts.Utilisateur;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.kahoot.entity.classAbstracts.Utilisateur;
+import jakarta.persistence.*;
 
 @Entity
 public class Createur extends Utilisateur {
@@ -29,7 +26,7 @@ public class Createur extends Utilisateur {
         this.idC = idC;
     }
 
-    @OneToMany(mappedBy = "createur")
+    @OneToMany(mappedBy = "createur", fetch = FetchType.EAGER)
     public Collection<Session> getSessions() {
         return sessions;
     }

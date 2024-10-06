@@ -1,9 +1,9 @@
-package domain;
+package com.kahoot.entity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import domain.classAbstracts.Utilisateur;
+import com.kahoot.entity.classAbstracts.Utilisateur;
 import jakarta.persistence.*;
 
 @Entity

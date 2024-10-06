@@ -1,6 +1,6 @@
-package service;
+package com.kahoot.dao;
 
-import domain.Session;
+import com.kahoot.entity.Session;
 
 public class SessionDao extends AbstractJpaDao<Long, Session> {
 

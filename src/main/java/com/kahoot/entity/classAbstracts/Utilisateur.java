@@ -1,4 +1,4 @@
-package domain.classAbstracts;
+package com.kahoot.entity.classAbstracts;
 
 import org.springframework.stereotype.Component;
 

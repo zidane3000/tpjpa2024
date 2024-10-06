@@ -69,7 +69,7 @@ public class JpaTest {
 		//tx.begin();
 		try {
 			
-			// TODO create and persist entity
+			// TODO create and persist com.kahoot.entity
 			test.createAndPersistEntities();
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -1,4 +1,4 @@
-package service;
+package com.kahoot.dao;
 
 import java.io.Serializable;
 import java.util.List;

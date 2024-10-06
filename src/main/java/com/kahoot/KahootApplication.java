@@ -1,12 +1,12 @@
-package spring;
+package com.kahoot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SampleApplication {
+public class KahootApplication {
 
     public static void main(String[] args) {
-        System.out.println(SpringApplication.run(SampleApplication.class, args));
+        System.out.println(SpringApplication.run(KahootApplication.class, args));
     }
 }
