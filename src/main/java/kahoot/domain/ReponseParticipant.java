@@ -1,17 +1,15 @@
 package kahoot.domain;
 
+import java.io.Serializable;
 import java.util.Date;
-
 import jakarta.persistence.*;
 
 @Entity
-public class ReponseParticipant {
+public class ReponseParticipant implements Serializable {
     private long id;
-    private String text;
-    private boolean isCorrect;
     private ReponsePossible reponsePossible;
     private Participant participant;
-    private Session session;
+    private int score;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
@@ -29,22 +27,6 @@ public class ReponseParticipant {
         this.id = id;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public boolean isCorrect() {
-        return isCorrect;
-    }
-
-    public void setCorrect(boolean isCorrect) {
-        this.isCorrect = isCorrect;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -54,6 +36,7 @@ public class ReponseParticipant {
     }
 
     @ManyToOne
+    @JoinColumn(nullable = false)
     public Participant getParticipant() {
         return participant;
     }
@@ -62,7 +45,8 @@ public class ReponseParticipant {
         this.participant = participant;
     }
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(nullable = false)
     public ReponsePossible getReponsePossible() {
         return reponsePossible;
     }
@@ -71,12 +55,11 @@ public class ReponseParticipant {
         this.reponsePossible = reponsePossible;
     }
 
-    @ManyToOne
-    public Session getSession() {
-        return session;
+    public int getScore() {
+        return score;
     }
 
-    public void setSession(Session session) {
-        this.session = session;
+    public void setScore(int score) {
+        this.score = score;
     }
 }

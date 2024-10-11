@@ -1,9 +1,8 @@
 package kahoot.domain;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
 
-import kahoot.domain.classAbstracts.Utilisateur;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -12,38 +11,30 @@ import jakarta.persistence.OneToMany;
 @Entity
 public class Createur extends Utilisateur {
 
-    private long idC;
-    private Collection<Session> sessions;
+    private long id;
+    private Collection<Kahoot> kahoots;
 
     public Createur() {
-        this.sessions = new ArrayList<>();
+        super();
     }
 
     @Id
     @GeneratedValue
-    public long getIdC() {
-        return idC;
+    public long getId() {
+        return id;
     }
 
-    public void setIdC(long idC) {
-        this.idC = idC;
+    public void setId(long id) {
+        this.id = id;
     }
 
     @OneToMany(mappedBy = "createur")
-    public Collection<Session> getSessions() {
-        return sessions;
+    public Collection<Kahoot> getKahoots() {
+        return kahoots;
     }
 
-    public void setSessions(Collection<Session> sessions) {
-        this.sessions = sessions;
-    }
-
-
-    public void creerSession(Session s){
-        if (sessions == null) {
-            sessions = new ArrayList<>();
-        }
-        this.sessions.add(s);
+    public void setKahoots(Collection<Kahoot> kahoots) {
+        this.kahoots = kahoots;
     }
 
 }

@@ -1,6 +1,6 @@
 package kahoot.dao.implDao;
 
-import kahoot.domain.classAbstracts.Utilisateur;
+import kahoot.domain.Utilisateur;
 import kahoot.dao.AbstractJpaDao;
 
 public class UtilisateurDao extends AbstractJpaDao<Long, Utilisateur> {

@@ -5,7 +5,7 @@ import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
-import kahoot.dao.jpa.EntityManagerHelper;
+import kahoot.jpa.EntityManagerHelper;
 
 public abstract class AbstractJpaDao<K, T extends Serializable> implements IGenericDao<K, T> {
 

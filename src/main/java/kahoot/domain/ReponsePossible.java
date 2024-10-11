@@ -1,19 +1,19 @@
 package kahoot.domain;
 
+
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class ReponsePossible {
+public class ReponsePossible implements Serializable {
 
     private long id;
-    private String reponses;
-    private Kahoot kahoot;
+    private String texteReponse;
+    private boolean correct;
 
-    public ReponsePossible() {
-    }
-    public ReponsePossible(String reponses) {
-        this.reponses = reponses;
-    }
+    private Question question;
+
+    public ReponsePossible() {}
 
     @Id
     @GeneratedValue
@@ -25,23 +25,30 @@ public class ReponsePossible {
         this.id = id;
     }
 
-    public String getReponses() {
-        return reponses;
+    public String getTexteReponse() {
+        return texteReponse;
     }
 
-    public void setReponses(String reponses) {
-        this.reponses = reponses;
+    public void setTexteReponse(String texteReponse) {
+        this.texteReponse = texteReponse;
     }
 
-    public void setKahoot(Kahoot kahoot) {
-        this.kahoot = kahoot;
+    public boolean getCorrect() {
+        return correct;
+    }
+
+    public void setCorrect(boolean correct) {
+        this.correct = correct;
     }
 
     @ManyToOne
-    public Kahoot getKahoot() {
-        return kahoot;
+    @JoinColumn(nullable = false)
+    public Question getQuestion() {
+        return question;
     }
 
-    
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 
 }

@@ -5,6 +5,7 @@ import kahoot.domain.Kahoot;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import kahoot.service.KahootService;
 
 
 import java.util.List;
@@ -14,7 +15,8 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class KahootResource {
 
-    private KahootDao kahootDao = new KahootDao();
+    private KahootService kahootService = new KahootService();
+    private KahootDao kahootDao = kahootService.getKahootDao();
 
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
