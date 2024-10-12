@@ -1,6 +1,6 @@
 package com.kahoot.rest;
 
-import com.kahoot.dto.KahootRequest;
+import com.kahoot.dto.KahootDTO;
 import com.kahoot.entity.Kahoot;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,11 +36,11 @@ public class KahootController {
      */
     @PostMapping("/create")
     @ResponseBody
-    public ResponseEntity<String> create(@RequestBody KahootRequest kahootRequest) {
+    public ResponseEntity<String> create(@RequestBody KahootDTO kahootDTO) {
         try {
-            Kahoot.Type kahootType = Kahoot.Type.valueOf(kahootRequest.getType().toUpperCase());
-            Kahoot kahoot = new Kahoot(kahootRequest.getScore(), kahootRequest.getClassement(), kahootType, null);
-            kahoot.setQuestion(kahootRequest.getQuestion());
+            Kahoot.Type kahootType = Kahoot.Type.valueOf(kahootDTO.getType().toUpperCase());
+            Kahoot kahoot = new Kahoot(kahootDTO.getScore(), kahootDTO.getClassement(), kahootType, null);
+            kahoot.setQuestion(kahootDTO.getQuestion());
             kahootDao.save(kahoot);
             String kahootId = String.valueOf(kahoot.getId());
             return new ResponseEntity<>("Kahoot created successfully with ID = " + kahootId, HttpStatus.CREATED);
@@ -82,17 +82,19 @@ public class KahootController {
         }
     }
 
-    /**
-     * PUT /kahoots/update?id={id}  --> Updates the score, ranking, and question for the Kahoot in the database.
+     /**
+     * PUT /kahoots/update  --> Updates the score, ranking, type, and question for the Kahoot in the database.
      */
     @PutMapping("/update")
     @ResponseBody
-    public ResponseEntity<String> updateKahoot(@RequestParam long id, @RequestParam int score, @RequestParam int classement, @RequestParam String question) {
+    public ResponseEntity<String> updateKahoot(@RequestParam long id, @RequestBody KahootDTO kahootDTO) {
         try {
             Kahoot kahoot = kahootDao.findById(id).orElseThrow(() -> new RuntimeException("Kahoot not found"));
-            kahoot.setScore(score);
-            kahoot.setClassement(classement);
-            kahoot.setQuestion(question);
+            kahoot.setScore(kahootDTO.getScore());
+            kahoot.setClassement(kahootDTO.getClassement());
+            kahoot.setQuestion(kahootDTO.getQuestion());
+            Kahoot.Type kahootType = Kahoot.Type.valueOf(kahootDTO.getType().toUpperCase());
+            kahoot.setType(kahootType);
             kahootDao.save(kahoot);
             return new ResponseEntity<>("Kahoot updated successfully!", HttpStatus.OK);
         } catch (Exception ex) {

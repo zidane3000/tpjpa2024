@@ -1,11 +1,9 @@
 package com.kahoot.dao;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.kahoot.entity.Session;
 
-public class SessionDao extends AbstractJpaDao<Long, Session> {
-
-    public SessionDao() {
-        super();
-        setClazz(Session.class);
-    }
+public interface SessionDao extends JpaRepository<Session,Long> {
+   
 }

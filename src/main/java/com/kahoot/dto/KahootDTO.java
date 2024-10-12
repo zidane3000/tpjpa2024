@@ -1,6 +1,6 @@
 package com.kahoot.dto;
 
-public class KahootRequest {
+public class KahootDTO {
 
         private int score;
         private int classement;
