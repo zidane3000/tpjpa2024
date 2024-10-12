@@ -3,10 +3,8 @@ package kahoot.domain;
 
 import java.util.Collection;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 
 @Entity
 public class Createur extends Utilisateur {
@@ -28,7 +26,8 @@ public class Createur extends Utilisateur {
         this.id = id;
     }
 
-    @OneToMany(mappedBy = "createur")
+
+    @OneToMany(mappedBy = "createur" , fetch = FetchType.LAZY)
     public Collection<Kahoot> getKahoots() {
         return kahoots;
     }

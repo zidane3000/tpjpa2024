@@ -1,14 +1,15 @@
 package kahoot;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
-import kahoot.rest.KahootResource; // Importez votre classe de ressource REST.
+import kahoot.rest.KahootResource;
 
-@ApplicationPath("/api") // Définit le chemin de base pour l'API
+import java.util.HashSet;
+import java.util.Set;
+
+
+@ApplicationPath("/")
 public class TestApplication extends Application {
 
     @Override
@@ -17,7 +18,7 @@ public class TestApplication extends Application {
 
         classes.add(OpenApiResource.class); // Ajoute la ressource OpenAPI pour Swagger
 
-        classes.add(KahootResource.class); // Ajoute ta ressource REST Kahoot
+        classes.add(KahootResource.class);
 
 
         // Ajoute d'autres ressources REST si nécessaire

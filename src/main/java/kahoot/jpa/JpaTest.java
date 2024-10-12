@@ -16,8 +16,6 @@ public class JpaTest {
 	
     public void createAndPersistEntities() {
 
-
-
     }
 	/**
 	 * @param args
