@@ -4,6 +4,7 @@ import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import kahoot.rest.KahootResource;
+import kahoot.rest.QuestionResource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -19,6 +20,8 @@ public class TestApplication extends Application {
         classes.add(OpenApiResource.class); // Ajoute la ressource OpenAPI pour Swagger
 
         classes.add(KahootResource.class);
+
+        classes.add(QuestionResource.class);
 
 
         // Ajoute d'autres ressources REST si nécessaire

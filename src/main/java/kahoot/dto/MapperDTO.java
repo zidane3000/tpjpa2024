@@ -1,6 +1,7 @@
 package kahoot.dto;
 
 import kahoot.domain.Kahoot;
+import kahoot.domain.Question;
 import kahoot.domain.Utilisateur;
 
 public class MapperDTO {
@@ -19,6 +20,18 @@ public class MapperDTO {
         utilisateurDTO.setId(utilisateur.getId());
         utilisateurDTO.setSurnom(utilisateur.getSurnom());
         return utilisateurDTO;
+    }
+
+    public static QuestionDTO toQuestionDTO(Question question) {
+        QuestionDTO questionDTO = new QuestionDTO();
+        questionDTO.setId(question.getId());
+        questionDTO.setTexteQuestion(question.getTexteQuestion());
+        questionDTO.setTypeQuestion(question.getTypeQuestion());
+        Kahoot kahoot = question.getKahoot();
+        if(kahoot != null) {
+            questionDTO.setKahoot_id(kahoot.getId());
+        }
+        return questionDTO;
     }
 
 }

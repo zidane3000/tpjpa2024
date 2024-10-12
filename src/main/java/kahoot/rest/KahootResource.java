@@ -38,7 +38,7 @@ public class KahootResource {
     @GET
     @Path("/{id}")
     public Response getKahootById(@PathParam("id") Long id) {
-        Kahoot kahoot = kahootDao.getKahootById(id);
+        Kahoot kahoot = kahootDao.findOne(id);
         if (kahoot != null) {
             return Response.ok(MapperDTO.toKahootDTO(kahoot)).build();
         } else {
@@ -47,14 +47,18 @@ public class KahootResource {
     }
 
     @POST
-    @Path("/createKahoot")
+    @Path("/create")
     public Response createKahoot( KahootDTO kahootDTO) {
         Kahoot kahoot = new Kahoot();
         kahoot.setTitre(kahootDTO.getTitre());
         kahoot.setType(kahootDTO.getType());
         kahoot.setPIN(kahootDTO.getPin());
         Createur createur = (Createur) utilisateurDao.findOne(kahootDTO.getCreateurId());
-        kahoot.setCreateur(createur);
+        if(createur != null) {
+            kahoot.setCreateur(createur);
+        }else{
+            return Response.status(Response.Status.NOT_FOUND).entity("Error: Creator does not exist, Kahoot creation failed.").build();
+        }
 
         kahootDao.save(kahoot);
         return Response.status(Response.Status.CREATED)
@@ -63,7 +67,7 @@ public class KahootResource {
     }
 
     @PUT
-    @Path("updateKahoot/{id}")
+    @Path("update/{id}")
     public Response updateKahoot(@PathParam("id") Long id, KahootDTO kahootDTO) {
         Kahoot existingKahoot = kahootDao.findOne(id);
         if (existingKahoot == null) {
@@ -78,7 +82,7 @@ public class KahootResource {
     }
 
     @DELETE
-    @Path("/deleteKahoot/{id}")
+    @Path("/delete/{id}")
     public Response deleteKahoot(@PathParam("id") Long id) {
         Kahoot existingKahoot = kahootDao.findOne(id);
         if (existingKahoot == null) {

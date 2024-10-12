@@ -5,8 +5,6 @@ import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
 import kahoot.dao.AbstractJpaDao;
 import kahoot.domain.Kahoot;
-import kahoot.dto.KahootDTO;
-import org.jboss.resteasy.annotations.Query;
 
 import static kahoot.jpa.EntityManagerHelper.getEntityManager;
 
