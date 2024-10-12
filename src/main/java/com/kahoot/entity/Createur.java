@@ -1,46 +1,25 @@
 package com.kahoot.entity;
 
-import java.util.ArrayList;
+
 import java.util.Collection;
 
-import com.kahoot.entity.classAbstracts.Utilisateur;
 import jakarta.persistence.*;
 
 @Entity
 public class Createur extends Utilisateur {
 
-    private long idC;
-    private Collection<Session> sessions;
+    
+    private Collection<Kahoot> kahoots;
 
-    public Createur() {
-        this.sessions = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "createur" , fetch = FetchType.LAZY)
+    public Collection<Kahoot> getKahoots() {
+        return kahoots;
     }
 
-    @Id
-    @GeneratedValue
-    public long getIdC() {
-        return idC;
-    }
-
-    public void setIdC(long idC) {
-        this.idC = idC;
-    }
-
-    @OneToMany(mappedBy = "createur", fetch = FetchType.EAGER)
-    public Collection<Session> getSessions() {
-        return sessions;
-    }
-
-    public void setSessions(Collection<Session> sessions) {
-        this.sessions = sessions;
-    }
-
-
-    public void creerSession(Session s){
-        if (sessions == null) {
-            sessions = new ArrayList<>();
-        }
-        this.sessions.add(s);
+    public void setKahoots(Collection<Kahoot> kahoots) {
+        this.kahoots = kahoots;
     }
 
 }

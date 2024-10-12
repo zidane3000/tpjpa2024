@@ -7,6 +7,5 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public interface KahootDao extends JpaRepository<Kahoot, Long> {
 
-    Kahoot findByQuestion(String question);
 
 }

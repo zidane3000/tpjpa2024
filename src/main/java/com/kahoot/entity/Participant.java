@@ -1,51 +1,50 @@
 package com.kahoot.entity;
 
-import java.util.ArrayList;
-import java.util.List;
 
-import com.kahoot.entity.classAbstracts.Utilisateur;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Participant extends Utilisateur {
 
-    private long idP;
-    private List<ReponseParticipant> reponsesParticipant;
-    private Session session;
+    private long id;
+    private Kahoot kahoot;
     private int scoreTotal;
 
+    private List<ReponseParticipant> reponseParticipants;
+
     public Participant() {
-        this.reponsesParticipant = new ArrayList<>();
+        super();
     }
 
     @Id
     @GeneratedValue
-    public long getIdP() {
-        return idP;
+    public long getId() {
+        return id;
     }
 
-
-
-    public void setIdP(long idP) {
-        this.idP = idP;
-    }
-
-    @OneToMany(mappedBy = "participant")
-    public List<ReponseParticipant> getReponsesParticipant() {
-        return reponsesParticipant;
+    public void setId(long id) {
+        this.id = id;
     }
 
     @ManyToOne
-    public Session getSession() {
-        return session;
+    @JoinColumn(nullable = false)
+    public Kahoot getKahoot() {
+        return kahoot;
     }
 
-    public void setReponsesParticipant(List<ReponseParticipant> reponseParticipant) {
-        this.reponsesParticipant = reponseParticipant;
+    @OneToMany(mappedBy = "participant")
+    public List<ReponseParticipant> getReponseParticipants() {
+        return reponseParticipants;
     }
 
-    public void setSession(Session session) {
-        this.session = session;
+    public void setReponseParticipants(List<ReponseParticipant> reponseParticipants) {
+        this.reponseParticipants = reponseParticipants;
+    }
+
+    public void setKahoot(Kahoot kahoot) {
+        this.kahoot = kahoot;
     }
 
     public int getScoreTotal() {
@@ -54,12 +53,5 @@ public class Participant extends Utilisateur {
 
     public void setScoreTotal(int scoreTotal) {
         this.scoreTotal = scoreTotal;
-    }
-
-    public void addReponse(ReponseParticipant reponse) {
-        if (reponsesParticipant == null) {
-            reponsesParticipant = new ArrayList<>();
-        }
-        this.reponsesParticipant.add(reponse);
     }
 }
