@@ -3,6 +3,7 @@ package kahoot.domain;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -34,7 +35,7 @@ public class Participant extends Utilisateur {
         return kahoot;
     }
 
-    @OneToMany(mappedBy = "participant")
+    @OneToMany(mappedBy = "participant", fetch = FetchType.LAZY)
     public List<ReponseParticipant> getReponseParticipants() {
         return reponseParticipants;
     }

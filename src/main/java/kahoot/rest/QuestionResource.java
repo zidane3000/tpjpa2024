@@ -25,11 +25,13 @@ public class QuestionResource {
     private QuestionDao questionDao = questionService.getQuestionDao();
     private KahootDao kahootDao = (new KahootService()).getKahootDao();
 
+    private MapperDTO mapperDTO = MapperDTO.INSTANCE;
+
     @GET
     public List<QuestionDTO> getAllQuestions() {
         List<Question> questions = questionDao.findAll();
         return questions.stream()
-                .map(MapperDTO::toQuestionDTO) // Utiliser le mapper pour convertir
+                .map(mapperDTO::toQuestionDTO) // Utiliser le mapper pour convertir
                 .collect(Collectors.toList());
     }
 
@@ -38,7 +40,7 @@ public class QuestionResource {
     public Response getQuestionById(@PathParam("id") Long id) {
         Question question = questionDao.findOne(id);
         if (question != null) {
-            return Response.ok(MapperDTO.toQuestionDTO(question)).build();
+            return Response.ok(mapperDTO.toQuestionDTO(question)).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -54,7 +56,7 @@ public class QuestionResource {
         question.setKahoot(kahoot);
         questionDao.save(question);
         return Response.status(Response.Status.CREATED)
-                .entity(MapperDTO.toQuestionDTO(question))
+                .entity(mapperDTO.toQuestionDTO(question))
                 .build();
     }
 
@@ -70,7 +72,7 @@ public class QuestionResource {
         existingQuestion.setTexteQuestion(questionDTO.getTexteQuestion());
         questionDao.update(existingQuestion);
 
-        return Response.ok(MapperDTO.toQuestionDTO(existingQuestion)).build();
+        return Response.ok(mapperDTO.toQuestionDTO(existingQuestion)).build();
     }
 
     @DELETE

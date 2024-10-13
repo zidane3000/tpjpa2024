@@ -58,7 +58,7 @@ public class Question implements Serializable {
         this.kahoot = kahoot;
     }
 
-    @OneToMany(mappedBy = "question")
+    @OneToMany(mappedBy = "question", fetch = FetchType.LAZY)
     public Collection<ReponsePossible> getReponsesPossibles() {
         return reponsesPossibles;
     }

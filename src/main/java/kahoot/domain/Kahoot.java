@@ -65,7 +65,7 @@ public class Kahoot implements Serializable {
         this.createur = createur;
     }
 
-    @OneToMany(mappedBy = "kahoot")
+    @OneToMany(mappedBy = "kahoot", fetch = FetchType.LAZY)
     public Collection<Participant> getParticipants() {
         return participants;
     }
@@ -74,7 +74,7 @@ public class Kahoot implements Serializable {
         this.participants = participants;
     }
 
-    @OneToMany(mappedBy = "kahoot", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "kahoot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Collection<Question> getQuestions() {
         return questions;
     }

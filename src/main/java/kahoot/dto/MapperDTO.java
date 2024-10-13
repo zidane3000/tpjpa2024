@@ -1,10 +1,36 @@
 package kahoot.dto;
 
-import kahoot.domain.Kahoot;
-import kahoot.domain.Question;
-import kahoot.domain.Utilisateur;
+import kahoot.domain.*;
+import org.mapstruct.Mapper;
+import org.mapstruct.factory.Mappers;
 
-public class MapperDTO {
+@Mapper
+public interface MapperDTO {
+
+    MapperDTO INSTANCE = Mappers.getMapper(MapperDTO.class);
+
+    KahootDTO toKahootDTO(Kahoot kahoot);
+    Kahoot toKahootEntity(KahootDTO kahootDTO);
+
+    UtilisateurDTO toUtilisateurDTO(Utilisateur utilisateur);
+
+    CreateurDTO toCreateurDTO(Createur createur);
+    Createur toCreateurEntity(CreateurDTO createurDTO);
+
+    ParticipantDTO toParticipantDTO(Participant participant);
+    Participant toParticipantEntity(ParticipantDTO participantDTO);
+
+    QuestionDTO toQuestionDTO(Question question);
+    Question toQuestionEntity(QuestionDTO questionDTO);
+
+    ReponsePossibleDTO toReponsePossibleDTO(ReponsePossible reponse);
+    ReponsePossible toReponsePossibleEntity(ReponsePossible reponse);
+
+    ReponseParticipantDTO toReponseParticipantDTO(ReponseParticipant reponse);
+    ReponseParticipant toReponseParticipantEntity(ReponseParticipant reponse);
+
+
+    /*
     public static KahootDTO toKahootDTO(Kahoot kahoot) {
         KahootDTO kahootDTO = new KahootDTO();
         kahootDTO.setId(kahoot.getId());
@@ -33,5 +59,15 @@ public class MapperDTO {
         }
         return questionDTO;
     }
+
+    public static ReponsePossibleDTO toReponsePossibleDTO(ReponsePossible reponse) {
+        ReponsePossibleDTO reponseDTO = new ReponsePossibleDTO();
+        reponseDTO.setId(reponse.getId());
+        reponseDTO.setTexteReponse(reponse.getTexteReponse());
+        reponseDTO.setCorrect(reponse.getCorrect());
+        reponseDTO.setQuestion_id(reponse.getQuestion().getId());
+        return reponseDTO;
+    }
+    */
 
 }

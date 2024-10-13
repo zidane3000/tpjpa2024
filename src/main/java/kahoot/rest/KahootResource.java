@@ -11,6 +11,7 @@ import kahoot.dto.KahootDTO;
 import kahoot.dto.MapperDTO;
 import kahoot.service.KahootService;
 import kahoot.service.UtilisateurService;
+import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,11 +27,13 @@ public class KahootResource {
 
     private UtilisateurDao utilisateurDao = (new UtilisateurService()).getUtilisateurDao();
 
+    private MapperDTO mapperDTO = MapperDTO.INSTANCE;
+
     @GET
     public List<KahootDTO> getAllKahoots() {
         List<Kahoot> kahoots = kahootDao.findAll();
         return kahoots.stream()
-                .map(MapperDTO::toKahootDTO) // Utiliser le mapper pour convertir
+                .map(mapperDTO::toKahootDTO) // Utiliser le mapper pour convertir
                 .collect(Collectors.toList());
     }
 
@@ -40,7 +43,7 @@ public class KahootResource {
     public Response getKahootById(@PathParam("id") Long id) {
         Kahoot kahoot = kahootDao.findOne(id);
         if (kahoot != null) {
-            return Response.ok(MapperDTO.toKahootDTO(kahoot)).build();
+            return Response.ok(mapperDTO.toKahootDTO(kahoot)).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -49,10 +52,13 @@ public class KahootResource {
     @POST
     @Path("/create")
     public Response createKahoot( KahootDTO kahootDTO) {
-        Kahoot kahoot = new Kahoot();
-        kahoot.setTitre(kahootDTO.getTitre());
-        kahoot.setType(kahootDTO.getType());
-        kahoot.setPIN(kahootDTO.getPin());
+       // Kahoot kahoot = new Kahoot();
+       // kahoot.setTitre(kahootDTO.getTitre());
+        //kahoot.setType(kahootDTO.getType());
+        //kahoot.setPIN(kahootDTO.getPin());
+
+        Kahoot kahoot = mapperDTO.toKahootEntity(kahootDTO);
+
         Createur createur = (Createur) utilisateurDao.findOne(kahootDTO.getCreateurId());
         if(createur != null) {
             kahoot.setCreateur(createur);
@@ -62,7 +68,7 @@ public class KahootResource {
 
         kahootDao.save(kahoot);
         return Response.status(Response.Status.CREATED)
-                .entity(MapperDTO.toKahootDTO(kahoot))
+                .entity(mapperDTO.toKahootDTO(kahoot))
                 .build();
     }
 
@@ -76,9 +82,10 @@ public class KahootResource {
 
         existingKahoot.setTitre(kahootDTO.getTitre());
         existingKahoot.setType(kahootDTO.getType());
+
         kahootDao.update(existingKahoot);
 
-        return Response.ok(MapperDTO.toKahootDTO(existingKahoot)).build();
+        return Response.ok(mapperDTO.toKahootDTO(existingKahoot)).build();
     }
 
     @DELETE

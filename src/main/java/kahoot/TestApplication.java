@@ -5,6 +5,7 @@ import jakarta.ws.rs.ApplicationPath;
 import jakarta.ws.rs.core.Application;
 import kahoot.rest.KahootResource;
 import kahoot.rest.QuestionResource;
+import kahoot.rest.UtilisateurResource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -22,6 +23,8 @@ public class TestApplication extends Application {
         classes.add(KahootResource.class);
 
         classes.add(QuestionResource.class);
+
+        classes.add(UtilisateurResource.class);
 
 
         // Ajoute d'autres ressources REST si nécessaire
