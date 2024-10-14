@@ -44,18 +44,14 @@ public class UtilisateurResource {
     @POST
     @Path("/create/participant")
     public Response createParticipant(ParticipantDTO participantDTO) {
-        // Récupération du Kahoot en utilisant l'identifiant du DTO
         Kahoot kahoot = kahootDao.findOne(participantDTO.getKahoot_id());
         if (kahoot == null) {
             return Response.status(Response.Status.NOT_FOUND).entity("Error: Kahoot does not exist").build();
         }
 
-        // Conversion du DTO en entité Participant
         Participant participant = mapperDTO.toParticipantEntity(participantDTO);
-        // Association du Kahoot au Participant
         participant.setKahoot(kahoot);
 
-        // Sauvegarde du Participant
         participantDao.save(participant);
         return Response.status(Response.Status.CREATED).entity(mapperDTO.toParticipantDTO(participant)).build();
     }

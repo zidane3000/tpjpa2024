@@ -74,6 +74,18 @@ public class Kahoot implements Serializable {
         this.participants = participants;
     }
 
+
+    @PrePersist
+    @PreUpdate
+    private void validateKahoot() {
+        if (questions == null || questions.isEmpty()) {
+            throw new IllegalArgumentException("Error : Un Kahoot doit avoir au moins une question");
+        }
+        else if (createur == null) {
+            throw new IllegalArgumentException("Error: Creator does not exist, Kahoot creation failed");
+        }
+    }
+
     @OneToMany(mappedBy = "kahoot", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Collection<Question> getQuestions() {
         return questions;

@@ -60,11 +60,11 @@ public class KahootResource {
         Kahoot kahoot = mapperDTO.toKahootEntity(kahootDTO);
 
         Createur createur = (Createur) utilisateurDao.findOne(kahootDTO.getCreateurId());
-        if(createur != null) {
+        //if(createur != null) {
             kahoot.setCreateur(createur);
-        }else{
-            return Response.status(Response.Status.NOT_FOUND).entity("Error: Creator does not exist, Kahoot creation failed.").build();
-        }
+        //}else{
+          //  return Response.status(Response.Status.NOT_FOUND).entity("Error: Creator does not exist, Kahoot creation failed.").build();
+        //}
 
         kahootDao.save(kahoot);
         return Response.status(Response.Status.CREATED)
