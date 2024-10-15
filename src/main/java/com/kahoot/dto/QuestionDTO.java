@@ -5,11 +5,12 @@ import lombok.Data;
 @Data
 public class QuestionDTO {
     
-        private long id;
-        private String question;
-        private String reponse;
-        private KahootDTO kahoot;
-        private boolean correcte;
-        private int score;
+    private long id;
+    private TypeQuestion typeQuestion;
+    private String texteQuestion;
+    private KahootDTO kahoot;
 
+    public enum TypeQuestion {
+        CHOIX_MULTIPLES, REPONSE_COURTE
+    }
 }

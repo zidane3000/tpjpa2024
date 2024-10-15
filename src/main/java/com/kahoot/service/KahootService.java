@@ -5,8 +5,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.kahoot.dao.KahootDao;
+import com.kahoot.dao.QuestionDao;
 import com.kahoot.dto.KahootDTO;
 import com.kahoot.entity.Kahoot;
+import com.kahoot.entity.Question;
 import com.kahoot.mapper.KahootMapper;
 
 import java.util.List;
@@ -22,6 +24,9 @@ public class KahootService {
     private KahootDao kahootDao;
 
     @Autowired
+    private QuestionDao questionDao;
+
+    @Autowired
     private KahootMapper kahootMapper;
 
     @Transactional
@@ -35,6 +40,7 @@ public class KahootService {
     @Transactional
     public KahootDTO createKahoot(KahootDTO kahootDTO) {
         Kahoot kahoot = kahootMapper.kahootDTOToKahoot(kahootDTO);
+        
         kahoot = kahootDao.save(kahoot);
         return kahootMapper.kahootToKahootDTO(kahoot);
     }

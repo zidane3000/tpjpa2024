@@ -6,6 +6,5 @@ import lombok.Data;
 public class CreateurDTO {
 
     private Long id;
-    private String nom;
-    private String email;
+    private String surnom;
 }

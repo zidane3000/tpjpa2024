@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 
-@Entity
-@Inheritance(strategy= InheritanceType.JOINED)
+@MappedSuperclass
 public abstract class Utilisateur implements Serializable {
 
     private long id;
