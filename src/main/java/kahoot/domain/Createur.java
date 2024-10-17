@@ -1,10 +1,7 @@
 package kahoot.domain;
 
 
-import java.io.Serializable;
 import java.util.Collection;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
